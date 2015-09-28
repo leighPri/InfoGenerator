@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>User Info Creator</title>
+</head>
+<body>
+
+<div class="intro">
+  <h1>User Info Creator</h1>
+<p>Welcome to User Info Creator, a simple app to generate user content for testing or prototype purposes.</p>
+<p>This app generates valid JSON in the below field for you to copy-and-paste into your own file.</p>
+</div>
+
+<form name="content-form">
+  <!-- <input type="text" name="number" placeholder="How many users?" id="userNum"><br> -->
+  <input type="button" value="Generate" name="generateButton" id="generateButton"><br>
+<textarea rows="50" cols="100" name="output" form="content-form" readonly="yes"></textarea><br>
+<input type="button" value="Copy to clipboard" name="copyButton">
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
