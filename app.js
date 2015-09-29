@@ -14,33 +14,32 @@ function getRNG(min, max){
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-
-
 //generate and stores a random number to determine how many objects will be created (max 10 for now)
 $("#generateButton").click(function(){
 var totalUsers = getRNG(1,11);
-var outputHolder = '['; //resets output in case user generates a new set of data
+var outputHolder = '[\n'; //resets output in case user generates a new set of data
 console.log(totalUsers);
 
 for (i=0; i < totalUsers; i++){
   console.log(i);
   var tempObject = "";
-  tempObject += '{';
+  tempObject += '\t{\n';
   var tempNum = getRNG(0,dataPool.firstName.length);
-  tempObject += '"firstName": ';
-  tempObject += '"' + dataPool.firstName[tempNum] + '",';
+  tempObject += '\t\t"firstName": ';
+  tempObject += '"' + dataPool.firstName[tempNum] + '",\n';
   tempNum = getRNG(0,dataPool.lastName.length);
-  tempObject += '"lastName": ';
-  tempObject += '"' + dataPool.lastName[tempNum] + '",';
+  tempObject += '\t\t"lastName": ';
+  tempObject += '"' + dataPool.lastName[tempNum] + '",\n';
   tempNum = getRNG(0,dataPool.job.length);
-  tempObject += '"job": ';
-  tempObject += '"' + dataPool.job[tempNum] + '"';
-  tempObject += '},';
+  tempObject += '\t\t"job": ';
+  tempObject += '"' + dataPool.job[tempNum] + '"\n';
+  tempObject += '\t},\n';
   outputHolder += tempObject;
 }
 
-outputHolder = outputHolder.substring(0,outputHolder.length-1);
-outputHolder += ']';
+outputHolder = outputHolder.substring(0,outputHolder.length-2);
+outputHolder += '\n';
+outputHolder += ']\n';
 
 console.log(outputHolder);
 
@@ -48,31 +47,3 @@ $('#outputArea').val(outputHolder);
 
 
 });
-
-//create a function that loops through an object, generating a random number to select an option from each array
-
-//iterates over whole object, selecting a random value from each array
-
-
-
-//push results onto temp array
-//display completed temp array in <textarea>
-
-
-// });
-
-
-//idea for later customization:
-  //generate email address based on firstname + lastname and a stock of domains
-    //still later, allow user to input own @whatever.com e-mail field
-  //allow option of a string with a full name or separate first/last names
-
-  // var numUsersTemp = $("#userNum").keyup(function(){
-  //   return this.value();
-  // });
-  //
-  // var numUsers = parseInt(numUsersTemp);
-  //
-  // $("#generateButton").click(function(){
-  //   console.log(numUsers);
-  // });
