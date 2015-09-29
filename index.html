@@ -15,27 +15,28 @@
 <div class="jsonGen">
   <div class="formOptions">
     <form name="content-form">
-    <p><input type="text" name="number" placeholder="How many users?" id="userNum">
+    <p><input type="text" name="number" placeholder="How many users?" id="userNum"><br>
       <span class="notes">If this is empty or 0 a random number from 1 to 10 will be generated.</span></p>
 
     <label>Select which key/value pairs you want your JSON to include:</label>
     <p><input type="checkbox" name="first-name" id="firstNameCheck">First Name
     <input type="checkbox" name="last-name" id="lastNameCheck">Last Name</p>
     <p><input type="checkbox" name="job" id="job">Job</p>
-    <p><input type="checkbox" name="email" id="email">E-mail</p>
-    <p><input type="text" name="customEmail" id="customEmail" placeholder="custom e-mail domain"> <span class="notes">(optional)</span></p>
-
-    <input type="button" value="Generate" name="generateButton" class="button" id="generateButton"><br><br>
+    <p><input type="checkbox" name="email" id="email">E-mail   
+      <input type="text" name="customEmail" id="customEmail" placeholder="custom e-mail domain"> <span class="notes">(optional)</span></p>
   </div>
-  <textarea id="outputArea" rows="40" cols="50" name="output" form="content-form" readonly="yes" placeholder="Your JSON will appear here"></textarea><br>
-  <input type="button" value="Select JSON" name="selectButton" class="button" id="selectButton">
-  <input type="button" value="Clear All Fields" name="clearButton" class="button" id="clearButton">
-</form>
+    <span class="button" id="generateButton">Generate</span><br><br>
 
+  <div class="textContent">
+    <textarea id="outputArea" rows="40" cols="50" name="output" form="content-form" readonly="yes" placeholder="Your JSON will appear here"></textarea><br>
+    <span class="button" id="selectButton">Select JSON</span>
+    <span class="button" id="clearButton">Clear All Fields</span>
+</form>
+</div>
+</div>
 <div class="footer">
   <p>Copyright 2015 Leigh Prince</p>
   <p><a href="mailto:leighprie@gmail.com">E-mail</a> <a href="https://github.com/leighPri/InfoGenerator">GitHub</a></p>
-</div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
