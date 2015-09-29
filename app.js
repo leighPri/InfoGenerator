@@ -15,7 +15,7 @@ function getRNG(min, max){
 }
 
 //generate and stores a random number to determine how many objects will be created (max 10 for now)
-$("#generateButton").click(function(){
+$('#generateButton').click(function(){
 var totalUsers = getRNG(1,11);
 var outputHolder = '[\n'; //resets output in case user generates a new set of data
 console.log(totalUsers);
@@ -23,17 +23,17 @@ console.log(totalUsers);
 for (i=0; i < totalUsers; i++){
   console.log(i);
   var tempObject = "";
-  tempObject += '\t{\n';
+  tempObject += '    {\n';
   var tempNum = getRNG(0,dataPool.firstName.length);
-  tempObject += '\t\t"firstName": ';
+  tempObject += '        "firstName": ';
   tempObject += '"' + dataPool.firstName[tempNum] + '",\n';
   tempNum = getRNG(0,dataPool.lastName.length);
-  tempObject += '\t\t"lastName": ';
+  tempObject += '        "lastName": ';
   tempObject += '"' + dataPool.lastName[tempNum] + '",\n';
   tempNum = getRNG(0,dataPool.job.length);
-  tempObject += '\t\t"job": ';
+  tempObject += '        "job": ';
   tempObject += '"' + dataPool.job[tempNum] + '"\n';
-  tempObject += '\t},\n';
+  tempObject += '    },\n';
   outputHolder += tempObject;
 }
 
@@ -45,5 +45,12 @@ console.log(outputHolder);
 
 $('#outputArea').val(outputHolder);
 
+});
 
+$('#clearButton').click(function(){
+  $('#outputArea').val('');
+});
+
+$('#selectButton').click(function(){
+  $('#outputArea').select();
 });
