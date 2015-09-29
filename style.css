@@ -1,0 +1,30 @@
+* {
+  border: none;
+}
+
+body {
+  background-color: #5F9EA0;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.notes {
+  font-size: .75em;
+}
+
+.intro {
+  background-color: #FFFF99;
+  border: solid #B22222;
+  text-align: center;
+  padding: 1% 0;
+  margin: 2% 0;
+}
+
+textarea,
+input {
+  background-color: #FFFF99;
+}
+
+.button {
+  border-color: solid #B22222;
+}
