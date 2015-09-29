@@ -28,19 +28,35 @@ $('#generateButton').click(function(){
   }
   console.log(totalUsers);
 
+//throws up error if user has not checked any boxes
+if (!$('#firstNameCheck').prop('checked') && !$('#lastNameCheck').prop('checked') && !$('#job').prop('checked')) {
+  outputHolder = 'You need to check at least one box';
+} else {
+
   for (i=0; i < totalUsers; i++){
     console.log(i);
     var tempObject = "";
+    var tempNum = "";
     tempObject += '    {\n';
-    var tempNum = getRNG(0,dataPool.firstName.length);
-    tempObject += '        "firstName": ';
-    tempObject += '"' + dataPool.firstName[tempNum] + '",\n';
-    tempNum = getRNG(0,dataPool.lastName.length);
-    tempObject += '        "lastName": ';
-    tempObject += '"' + dataPool.lastName[tempNum] + '",\n';
-    tempNum = getRNG(0,dataPool.job.length);
-    tempObject += '        "job": ';
-    tempObject += '"' + dataPool.job[tempNum] + '"\n';
+
+    if ($('#firstNameCheck').prop('checked')){
+      tempNum = getRNG(0,dataPool.firstName.length);
+      tempObject += '        "firstName": ';
+      tempObject += '"' + dataPool.firstName[tempNum] + '",\n';
+    }
+
+    if ($('#lastNameCheck').prop('checked')){
+      tempNum = getRNG(0,dataPool.lastName.length);
+      tempObject += '        "lastName": ';
+      tempObject += '"' + dataPool.lastName[tempNum] + '",\n';
+    }
+
+    if ($('#job').prop('checked')){
+      tempNum = getRNG(0,dataPool.job.length);
+      tempObject += '        "job": ';
+      tempObject += '"' + dataPool.job[tempNum] + '"\n';
+    }
+
     tempObject += '    },\n';
     outputHolder += tempObject;
   }
@@ -49,16 +65,20 @@ $('#generateButton').click(function(){
   outputHolder += ']\n';
 
   console.log(outputHolder);
-
+}
   $('#outputArea').val(outputHolder);
 
 });
 
+$('#selectButton').click(function(){
+  $('#outputArea').select();
+});
+
+//clears and resets everything
 $('#clearButton').click(function(){
   $('#outputArea').val('');
   $('#userNum').val('');
-});
-
-$('#selectButton').click(function(){
-  $('#outputArea').select();
+  $('#firstNameCheck').prop('checked', false);
+  $('#lastNameCheck').prop('checked', false);
+  $('#job').prop('checked', false);
 });

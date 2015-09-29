@@ -12,6 +12,8 @@ Currently it's a fairly basic code that only pulls from a small object in the ap
 
 -User can select number of objects they want generated. When empty or 0 a random number (up to 10) is generated instead.
 
+-User can specify which key/value pairs to include in JSON via checkboxes
+
 
 # Planned features
 -Add some CSS to make it pretty
@@ -30,4 +32,4 @@ Currently it's a fairly basic code that only pulls from a small object in the ap
 
   -Eventual allowing user to designate area code (optional)
 
--Checkboxes that will allow user to determine which key/value pairs to include in their data
+  
