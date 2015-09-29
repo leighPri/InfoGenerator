@@ -16,21 +16,41 @@ function getRNG(min, max){
 
 
 
-
-
 //generate and stores a random number to determine how many objects will be created (max 10 for now)
 $("#generateButton").click(function(){
 var totalUsers = getRNG(1,11);
 var outputHolder = ""; //resets output in case user generates a new set of data
-var tempObject = "";
+console.log(totalUsers);
 
-$.each(dataPool, function(key, value) {
-    tempObject += '"' + key + '": '
-    var tempNum = getRNG(0, value.length);
-    tempObject += '"' + value[tempNum] + '",';
+
+
+
+for (i=0; i < totalUsers; i++){
+  console.log(i);
+  var tempObject = "";
+  tempObject += '{';
+  var tempNum = getRNG(0,dataPool.firstName.length);
+  tempObject += '"firstName": ';
+  tempObject += '"' + dataPool.firstName[tempNum] + '",';
+  tempNum = getRNG(0,dataPool.lastName.length);
+  tempObject += '"lastName": ';
+  tempObject += '"' + dataPool.lastName[tempNum] + '",';
+  tempNum = getRNG(0,dataPool.job.length);
+  tempObject += '"job": ';
+  tempObject += '"' + dataPool.job[tempNum];
+  tempObject += '},';
+  outputHolder += tempObject;
+}
+
+outputHolder.slice(0,-1);
+console.log(outputHolder);
+
+$('#outputArea').val(outputHolder);
+
+
 });
-tempObject.slice(0,-1); //removes last ,
-console.log(tempObject);
+// tempObject.slice(0,-1); //removes last ,
+// console.log(tempObject);
 
 //constructor function...might not use
 // function User(firstName, lastName, email, job){
@@ -50,7 +70,7 @@ console.log(tempObject);
 //display completed temp array in <textarea>
 
 
-});
+// });
 
 
 //idea for later customization:
