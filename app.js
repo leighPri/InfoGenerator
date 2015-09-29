@@ -19,11 +19,8 @@ function getRNG(min, max){
 //generate and stores a random number to determine how many objects will be created (max 10 for now)
 $("#generateButton").click(function(){
 var totalUsers = getRNG(1,11);
-var outputHolder = ""; //resets output in case user generates a new set of data
+var outputHolder = '['; //resets output in case user generates a new set of data
 console.log(totalUsers);
-
-
-
 
 for (i=0; i < totalUsers; i++){
   console.log(i);
@@ -37,28 +34,20 @@ for (i=0; i < totalUsers; i++){
   tempObject += '"' + dataPool.lastName[tempNum] + '",';
   tempNum = getRNG(0,dataPool.job.length);
   tempObject += '"job": ';
-  tempObject += '"' + dataPool.job[tempNum];
+  tempObject += '"' + dataPool.job[tempNum] + '"';
   tempObject += '},';
   outputHolder += tempObject;
 }
 
-outputHolder.slice(0,-1);
+outputHolder = outputHolder.substring(0,outputHolder.length-1);
+outputHolder += ']';
+
 console.log(outputHolder);
 
 $('#outputArea').val(outputHolder);
 
 
 });
-// tempObject.slice(0,-1); //removes last ,
-// console.log(tempObject);
-
-//constructor function...might not use
-// function User(firstName, lastName, email, job){
-//   this.firstName = firstName;
-//   this.lastName = lastName;
-//   this.email = email;
-//   this.job = job;
-// }
 
 //create a function that loops through an object, generating a random number to select an option from each array
 
