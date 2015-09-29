@@ -6,14 +6,21 @@ Currently it's a fairly basic code that only pulls from a small object in the ap
 # Current features
 -Upon clicking "generate" app will fill textarea with a random selection of user data (up to 10 objects) formatted for JSON
 
+-Clear button clears all forms and textarea
+
+-Select button selects all text in textarea field
+
+-User can select number of objects they want generated. When empty or 0 a random number (up to 10) is generated instead.
+
+
 # Planned features
 -Add some CSS to make it pretty
 
 -Move current dataPool object to its own JSON file and extend its contents
 
--Allow user to choose number of objects generated, if blank or 0 a random number is generated
+-Validate that user has entered in a number for users instead of any other string
 
--Add a button to copy data to clipboard (current one is placeholder)
+-Add a button to copy data to clipboard (maybe, current select button is funcitonal)
 
 -Generate "email" value based on firstName and lastName values along with randomized domain
 

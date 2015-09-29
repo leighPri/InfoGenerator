@@ -1,8 +1,4 @@
-//OK new plan, make the funcitons that generate the data first then worry about customizing numbers and types.
 
-//populate a big object that has some data in it to play with (will eventually be changed to a JSON file to manage separately)
-
-//this is acceptable for JSON except the keys should be in quotes too
 var dataPool = {
   firstName: ["Alison", "Bob", "Susan", "Anthony", "Samantha", "Daniel", "Jack", "Leigh", "Brian", "Christopher", "Steven", "Albert"],
   lastName: ["Stevenson", "Johnson", "Cox", "Smith", "Cooke", "Carter", "Jackson", "Akers", "Stiles", "Anderson", "Addams", "Samuels"],
@@ -14,41 +10,53 @@ function getRNG(min, max){
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+//prevents old data from remaining in textarea when page is reloaded
+$(document).ready(function(){
+    $('#outputArea').val('');
+});
+
 //generate and stores a random number to determine how many objects will be created (max 10 for now)
 $('#generateButton').click(function(){
-var totalUsers = getRNG(1,11);
-var outputHolder = '[\n'; //resets output in case user generates a new set of data
-console.log(totalUsers);
+  var totalUsers;
+  var outputHolder = '[\n'; //resets output in case user generates a new set of data
 
-for (i=0; i < totalUsers; i++){
-  console.log(i);
-  var tempObject = "";
-  tempObject += '    {\n';
-  var tempNum = getRNG(0,dataPool.firstName.length);
-  tempObject += '        "firstName": ';
-  tempObject += '"' + dataPool.firstName[tempNum] + '",\n';
-  tempNum = getRNG(0,dataPool.lastName.length);
-  tempObject += '        "lastName": ';
-  tempObject += '"' + dataPool.lastName[tempNum] + '",\n';
-  tempNum = getRNG(0,dataPool.job.length);
-  tempObject += '        "job": ';
-  tempObject += '"' + dataPool.job[tempNum] + '"\n';
-  tempObject += '    },\n';
-  outputHolder += tempObject;
-}
+  //generates random value (up to 10) if 0 or nothing is in form prompt
+  if ($('#userNum').val() === 0 || $('#userNum').val() === "") {
+    totalUsers = getRNG(1,11);
+  } else {
+    totalUsers = $('#userNum').val();
+  }
+  console.log(totalUsers);
 
-outputHolder = outputHolder.substring(0,outputHolder.length-2);
-outputHolder += '\n';
-outputHolder += ']\n';
+  for (i=0; i < totalUsers; i++){
+    console.log(i);
+    var tempObject = "";
+    tempObject += '    {\n';
+    var tempNum = getRNG(0,dataPool.firstName.length);
+    tempObject += '        "firstName": ';
+    tempObject += '"' + dataPool.firstName[tempNum] + '",\n';
+    tempNum = getRNG(0,dataPool.lastName.length);
+    tempObject += '        "lastName": ';
+    tempObject += '"' + dataPool.lastName[tempNum] + '",\n';
+    tempNum = getRNG(0,dataPool.job.length);
+    tempObject += '        "job": ';
+    tempObject += '"' + dataPool.job[tempNum] + '"\n';
+    tempObject += '    },\n';
+    outputHolder += tempObject;
+  }
+  outputHolder = outputHolder.substring(0,outputHolder.length-2);
+  outputHolder += '\n';
+  outputHolder += ']\n';
 
-console.log(outputHolder);
+  console.log(outputHolder);
 
-$('#outputArea').val(outputHolder);
+  $('#outputArea').val(outputHolder);
 
 });
 
 $('#clearButton').click(function(){
   $('#outputArea').val('');
+  $('#userNum').val('');
 });
 
 $('#selectButton').click(function(){
