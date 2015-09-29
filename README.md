@@ -8,7 +8,7 @@ Currently it's a fairly basic code that only pulls from a small object in the ap
 
 -User can select number of objects they want generated. When empty or 0 a random number (up to 10) is generated instead. Field does not accept anything other than numbers.
 
--User can specify which key/value pairs to include in JSON via checkboxes
+-User can specify which available key/value pairs to include in JSON via checkboxes
 
 -Generates "email" value based on firstName and lastName values along with randomized domain, defaults to "example" if no name boxes checked
 
@@ -18,7 +18,7 @@ Currently it's a fairly basic code that only pulls from a small object in the ap
 
 -Move current dataPool object to its own JSON file and extend its contents
 
--Add a button to copy data to clipboard (maybe, current select button is funcitonal)
+-Add a button to copy data to clipboard (maybe, current select button is functional)
 
 -Allow user to instead fill in custom e-mail domain to populate "email" value
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<link rel="stylesheet" href="style.css" type="text/css">
 <title>User Info Creator</title>
 </head>
 <body>
@@ -10,23 +10,33 @@
   <h1>User Info Creator</h1>
 <p>Welcome to User Info Creator, a simple app to generate user content for testing or prototype purposes.</p>
 <p>This app generates valid JSON in the below field for you to copy-and-paste into your own file.</p>
-<p>Please choose the number of objects you would like to generate (or leave blank for a random number up to 10).</p>
 </div>
 
-<form name="content-form">
-  <input type="text" name="number" placeholder="How many users?" id="userNum"><br><br>
+<div class="jsonGen">
+  <div class="formOptions">
+    <form name="content-form">
+    <p><input type="text" name="number" placeholder="How many users?" id="userNum">
+      <span class="notes">If this is empty or 0 a random number from 1 to 10 will be generated.</span></p>
 
-  <label>Select which key/value pairs you want your JSON to include.</label><br>
-  <input type="checkbox" name="first-name" id="firstNameCheck">First Name
-  <input type="checkbox" name="last-name" id="lastNameCheck">Last Name<br>
-  <input type="checkbox" name="job" id="job">Job<br>
-  <input type="checkbox" name="email" id="email">E-mail<br>
+    <label>Select which key/value pairs you want your JSON to include:</label>
+    <p><input type="checkbox" name="first-name" id="firstNameCheck">First Name
+    <input type="checkbox" name="last-name" id="lastNameCheck">Last Name</p>
+    <p><input type="checkbox" name="job" id="job">Job</p>
+    <p><input type="checkbox" name="email" id="email">E-mail<br>
+    <input type="text" name="customEmail" id="customEmail" placeholder="custom e-mail domain"> <span class="notes">(optional)</span></p>
 
-  <input type="button" value="Generate" name="generateButton" id="generateButton"><br><br>
-<textarea id="outputArea" rows="50" cols="50" name="output" form="content-form" readonly="yes" placeholder="Your JSON will appear here"></textarea><br>
-<input type="button" value="Select JSON" name="selectButton" id="selectButton">
-<input type="button" value="Clear All Fields" name="clearButton" id="clearButton">
+    <input type="button" value="Generate" name="generateButton" id="generateButton"><br><br>
+  </div>
+  <textarea id="outputArea" rows="40" cols="50" name="output" form="content-form" readonly="yes" placeholder="Your JSON will appear here"></textarea><br>
+  <input type="button" value="Select JSON" name="selectButton" id="selectButton">
+  <input type="button" value="Clear All Fields" name="clearButton" id="clearButton">
 </form>
+
+<div class="footer">
+  <p>Copyright 2015 Leigh Prince</p>
+  <p><a href="mailto:leighprie@gmail.com">E-mail</a> <a href="https://github.com/leighPri/InfoGenerator">GitHub</a></p>
+</div>
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="app.js"></script>
