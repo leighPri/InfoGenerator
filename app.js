@@ -15,6 +15,10 @@ function getRNG(min, max){
 function clearOut() {
   $('#outputArea').val('');
   $('#userNum').val('');
+<<<<<<< HEAD
+=======
+  $('#customEmail').val('');
+>>>>>>> 89f7d5bcacba4732703031812502f9eaec7f8ff2
   $('#firstNameCheck').prop('checked', false);
   $('#lastNameCheck').prop('checked', false);
   $('#job').prop('checked', false);
@@ -79,9 +83,23 @@ if (!$('#firstNameCheck').prop('checked') && !$('#lastNameCheck').prop('checked'
       if (fullName === ""){
         fullName = "example"; //if user did not choose to generate a name
       }
+<<<<<<< HEAD
         tempNum = getRNG(0,dataPool.emailDomain.length);
         tempObject += '        "email": ';
         tempObject += '"' + fullName.toLowerCase() + '@' + dataPool.emailDomain[tempNum] + '",\n';
+=======
+      //loads in custom domain if user provided one
+      if ($('#customEmail').val() !== "") {
+        tempObject += '        "email": ';
+        tempObject += '"' + fullName.toLowerCase() + '@' + $('#customEmail').val() + '",\n';
+      }
+      //selects random domain from available content if no custom name
+      else {
+        tempNum = getRNG(0,dataPool.emailDomain.length);
+        tempObject += '        "email": ';
+        tempObject += '"' + fullName.toLowerCase() + '@' + dataPool.emailDomain[tempNum] + '",\n';
+      }
+>>>>>>> 89f7d5bcacba4732703031812502f9eaec7f8ff2
     }
 
     tempObject += '    },\n';

@@ -25,6 +25,21 @@ input {
   background-color: #FFFF99;
 }
 
+<<<<<<< HEAD
 .button {
   border-color: solid #B22222;
+=======
+.jsonGen {
+  text-align: left;
+  margin-left: 30%;
+}
+
+.button {
+  background: #FFFF99;
+  border: solid #B22222;
+  padding: 1%;
+  margin: 1%;
+  margin-bottom: 0;
+  display: inline-block;
+>>>>>>> 89f7d5bcacba4732703031812502f9eaec7f8ff2
 }
