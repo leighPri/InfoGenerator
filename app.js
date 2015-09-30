@@ -11,13 +11,41 @@ function getRNG(min, max){
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+//uses previous function to generate a string made up of multiple numbers
+function getMultiRNG(min, max, amt) {
+  var finalResult = "";
+  var tempHolder;
+  for (i = 0; i < amt; i++){
+    tempHolder = getRNG(min, max);
+    tempHolder.toString();
+    finalResult += tempHolder;
+  }
+  return finalResult;
+}
+
+//to generate a randomized phone number, area code input is optional
+function fakePhoneGen(area) {
+  //checks to see if user has provided an area code, if not or if user has entered an invalid value it generates one
+  if (!area || isNaN(area) || area > 999) {
+     area = getRNG(100, 999);
+  }
+  area.toString();
+  var finalNum = area + "-555-";
+  for (i=0; i < 4; i++){
+    finalNum += getMultiRNG(0, 10, 4);
+  }
+  return finalNum;
+}
+
 //empties all forms to be called on document load and via the clear button
 function clearOut() {
   $('#outputArea').val('');
   $('#userNum').val('');
+  $('#customArea').val('');
   $('#customEmail').val('');
   $('#firstNameCheck').prop('checked', false);
   $('#lastNameCheck').prop('checked', false);
+  $('#phone').prop('checked', false);
   $('#job').prop('checked', false);
   $('#email').prop('checked', false)
 }
@@ -46,7 +74,11 @@ $('#generateButton').click(function(){
   }
 
 //throws up error if user has not checked any boxes
-if (!$('#firstNameCheck').prop('checked') && !$('#lastNameCheck').prop('checked') && !$('#job').prop('checked') && !$('#email').prop('checked')) {
+if (!$('#firstNameCheck').prop('checked') &&
+    !$('#lastNameCheck').prop('checked')  &&
+    !$('#job').prop('checked') &&
+    !$('#email').prop('checked') &&
+    !$('#phone').prop('checked')) {
   outputHolder = 'You need to check at least one box';
 } else {
 
@@ -74,6 +106,12 @@ if (!$('#firstNameCheck').prop('checked') && !$('#lastNameCheck').prop('checked'
       tempNum = getRNG(0,dataPool.job.length);
       tempObject += '        "job": ';
       tempObject += '"' + dataPool.job[tempNum] + '",\n';
+    }
+
+    if ($('#phone').prop('checked')){
+      var tempPhone = fakePhoneGen($('#customArea').val());
+      tempObject += '        "phone": ';
+      tempObject += '"' + tempPhone + '",\n';
     }
 
     if ($('#email').prop('checked')){
