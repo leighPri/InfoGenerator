@@ -12,16 +12,11 @@ Currently it's a fairly basic code that only pulls from a small object in the ap
 
 -Generates "email" value based on firstName and lastName values along with randomized domain, defaults to "example" if no name boxes checked
 
+-Generates a fake phone number (US format, starts with "555"). User can designate a custom area code. If field is left blank
+or invalid a random one will be generated.
+
 
 # Planned features
--Add some CSS to make it pretty
-
 -Move current dataPool object to its own JSON file and extend its contents
 
 -Add a button to copy data to clipboard (maybe, current select button is functional)
-
--Allow user to instead fill in custom e-mail domain to populate "email" value
-
--Randomly generated phone number value (will contain 555 to prevent creating real numbers on accident)
-
--Eventual allowing user to designate area code (optional)
