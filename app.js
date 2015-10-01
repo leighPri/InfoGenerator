@@ -14,9 +14,8 @@ function getRNG(min, max){
 //uses previous function to generate a string made up of multiple numbers
 function getMultiRNG(min, max, amt) {
   var finalResult = "";
-  var tempHolder;
-  for (i = 0; i < amt; i++){
-    tempHolder = getRNG(min, max);
+  for (i = 0; i < amt; i++) {
+    var tempHolder = getRNG(min, max);
     tempHolder.toString();
     finalResult += tempHolder;
   }
@@ -31,9 +30,7 @@ function fakePhoneGen(area) {
   }
   area.toString();
   var finalNum = area + "-555-";
-  for (i=0; i < 4; i++){
-    finalNum += getMultiRNG(0, 10, 4);
-  }
+  finalNum += getMultiRNG(0, 10, 4);
   return finalNum;
 }
 
@@ -130,8 +127,8 @@ if (!$('#firstNameCheck').prop('checked') &&
         tempObject += '"' + fullName.toLowerCase() + '@' + dataPool.emailDomain[tempNum] + '",\n';
       }
     }
-
-    tempObject += '    },\n';
+    tempObject = tempObject.substring(0,tempObject.length-2);
+    tempObject += '\n    },\n';
     outputHolder += tempObject;
   }
   outputHolder = outputHolder.substring(0,outputHolder.length-2);

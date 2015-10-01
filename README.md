@@ -20,3 +20,9 @@ or invalid a random one will be generated.
 -Move current dataPool object to its own JSON file and extend its contents
 
 -Add a button to copy data to clipboard (maybe, current select button is functional)
+
+# Known Issues
+
+-When phone option clicked only one object is created
+
+-Phone generator hangs script after awhile
