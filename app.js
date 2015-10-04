@@ -6,13 +6,55 @@ var dataPool = {
   emailDomain: ["gmail.com", "hotmail.com", "aol.com", "fakemail.org"]
 };
 
+//declared variables here to allow for proper global scope elsewhere
+var tempObject = "";
+var tempNum = "";
+var fullName ="";
+
 //defines RNG generator for this app
 function getRNG(min, max){
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+//uses previous function to generate a string made up of multiple numbers
+function getMultiRNG(min, max, amt) {
+  var finalResult = "";
+  for (a = 0; a < amt; a++) {
+    var tempHolder = getRNG(min, max);
+    tempHolder.toString();
+    finalResult += tempHolder;
+  }
+  return finalResult;
+}
+
+//to generate a randomized phone number, area code input is optional
+function fakePhoneGen(area) {
+  //checks to see if user has provided an area code, if not or if user has entered an invalid value it generates one
+  if (!area || area < 100 || area > 999) {
+     area = getRNG(100, 999);
+  }
+  area.toString();
+  var finalNum = area + "-555-";
+  finalNum += getMultiRNG(0, 10, 4);
+  return finalNum;
+}
+
+//defines repeating logic used to build strings below
+function stringBuilder(keyName, optionalValue) {
+  var stringBuilderHolder;
+  stringBuilderHolder = '        "'+ keyName + '": ';
+  if (optionalValue) {
+    stringBuilderHolder += '"' + optionalValue + '",\n';
+  } else {
+    tempNum = getRNG(0,dataPool[keyName].length);
+    stringBuilderHolder += '"' + dataPool[keyName][tempNum] + '",\n';
+  }
+  return stringBuilderHolder;
+}
+
 //empties all forms to be called on document load and via the clear button
 function clearOut() {
+<<<<<<< HEAD
   $('#outputArea').val('');
   $('#userNum').val('');
 <<<<<<< HEAD
@@ -23,6 +65,10 @@ function clearOut() {
   $('#lastNameCheck').prop('checked', false);
   $('#job').prop('checked', false);
   $('#email').prop('checked', false)
+=======
+  $('#outputArea, #userNum, #customArea, #customEmail').val('');
+  $('#firstNameCheck, #lastNameCheck, #phone, #job, #email').prop('checked', false);
+>>>>>>> gh-pages
 }
 
 //clears out everything when document loads
@@ -31,52 +77,66 @@ $(document).ready(function(){
 });
 
 //keeps user from being able to enter anything other than numbers into user number field
-$('#userNum').keyup(function(){
-  if (!$.isNumeric($('#userNum').val())){
-    $('#userNum').val('');
-  }
+function numbersOnly(thing) { //accepts Jquery selectors
+  thing.keyup(function(){
+    if (!$.isNumeric(thing.val())){
+      thing.val('');
+    }
+  });
+
+}
+
+//These forms only accept number values
+numbersOnly($('#userNum'));
+numbersOnly($('#customArea'));
+
+$('#checkAllButton').click(function() {
+  $('#firstNameCheck, #lastNameCheck, #phone, #job, #email').prop('checked', true);
 });
 
-
+//executes generate functions on click
 $('#generateButton').click(function(){
   var totalUsers;
   var outputHolder = '[\n'; //resets output in case user generates a new set of data
 
-  if ($('#userNum').val() === 0 || $('#userNum').val() === "") {
+  if ($('#userNum').val() <= 0 || $('#userNum').val() === "") {
     totalUsers = getRNG(1,11);  //generates random value (up to 10) if 0 or nothing is in form prompt
   } else {
     totalUsers = $('#userNum').val();
   }
 
 //throws up error if user has not checked any boxes
-if (!$('#firstNameCheck').prop('checked') && !$('#lastNameCheck').prop('checked') && !$('#job').prop('checked') && !$('#email').prop('checked')) {
+if (!$('#firstNameCheck').prop('checked') &&
+    !$('#lastNameCheck').prop('checked')  &&
+    !$('#job').prop('checked') &&
+    !$('#email').prop('checked') &&
+    !$('#phone').prop('checked')) {
   outputHolder = 'You need to check at least one box';
 } else {
 
   for (i=0; i < totalUsers; i++){
-    var tempObject = "";
-    var tempNum = "";
-    var fullName =""; //holds names to build e-mail string
+    tempObject = "";
+    tempNum = "";
+    fullName =""; //variables are set to blank at start of each loop to sanitize results
     tempObject += '    {\n';
 
     if ($('#firstNameCheck').prop('checked')){
-      tempNum = getRNG(0,dataPool.firstName.length);
-      tempObject += '        "firstName": ';
-      tempObject += '"' + dataPool.firstName[tempNum] + '",\n';
+      tempObject += stringBuilder('firstName');
       fullName += dataPool.firstName[tempNum];
     }
 
     if ($('#lastNameCheck').prop('checked')){
-      tempNum = getRNG(0,dataPool.lastName.length);
-      tempObject += '        "lastName": ';
-      tempObject += '"' + dataPool.lastName[tempNum] + '",\n';
+      tempObject += stringBuilder('lastName');
       fullName += dataPool.lastName[tempNum];
     }
 
     if ($('#job').prop('checked')){
-      tempNum = getRNG(0,dataPool.job.length);
-      tempObject += '        "job": ';
-      tempObject += '"' + dataPool.job[tempNum] + '",\n';
+        tempObject += stringBuilder('job');
+    }
+
+    if ($('#phone').prop('checked')){
+      var tempPhone = fakePhoneGen($('#customArea').val());
+      tempObject += stringBuilder('lastName', tempPhone);
     }
 
     if ($('#email').prop('checked')){
@@ -101,8 +161,8 @@ if (!$('#firstNameCheck').prop('checked') && !$('#lastNameCheck').prop('checked'
       }
 >>>>>>> 89f7d5bcacba4732703031812502f9eaec7f8ff2
     }
-
-    tempObject += '    },\n';
+    tempObject = tempObject.substring(0,tempObject.length-2);
+    tempObject += '\n    },\n';
     outputHolder += tempObject;
   }
   outputHolder = outputHolder.substring(0,outputHolder.length-2);
