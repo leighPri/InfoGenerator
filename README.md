@@ -23,6 +23,12 @@ or invalid a random one will be generated.
 
 # Known Issues
 
--When phone option clicked only one object is created
+-~~When phone option clicked only one object is created~~
 
--Phone generator hangs script after awhile
+-~~Phone generator hangs script after awhile~~
+
+# Non-Feature Changes
+
+-Fixed bugs with phone option
+
+-Rewrote portions of code to be more concise

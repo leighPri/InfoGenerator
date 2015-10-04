@@ -16,7 +16,7 @@
   <div class="formOptions">
     <form name="content-form">
     <p><input type="text" name="number" placeholder="How many users?" id="userNum"><br>
-      <span class="notes">If this is empty or 0 a random number from 1 to 10 will be generated.</span></p>
+      <span class="notes">If this is empty, 0, or invalid a random number from 1 to 10 will be generated.</span></p>
 
     <label>Select which key/value pairs you want your JSON to include:</label>
     <p><input type="checkbox" name="first-name" id="firstNameCheck">First Name
@@ -28,6 +28,7 @@
         <input type="text" name="customArea" id="customArea" placeholder="custom area code"> <span class="notes">(optional)</span></p>
 
   </div>
+    <span class="button" id="checkAllButton">Check All</span>
     <span class="button" id="generateButton">Generate</span><br><br>
 
   <div class="textContent">
