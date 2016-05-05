@@ -54,21 +54,15 @@ function stringBuilder(keyName, optionalValue) {
 
 //empties all forms to be called on document load and via the clear button
 function clearOut() {
-<<<<<<< HEAD
   $('#outputArea').val('');
   $('#userNum').val('');
-<<<<<<< HEAD
-=======
   $('#customEmail').val('');
->>>>>>> 89f7d5bcacba4732703031812502f9eaec7f8ff2
   $('#firstNameCheck').prop('checked', false);
   $('#lastNameCheck').prop('checked', false);
   $('#job').prop('checked', false);
   $('#email').prop('checked', false)
-=======
   $('#outputArea, #userNum, #customArea, #customEmail').val('');
   $('#firstNameCheck, #lastNameCheck, #phone, #job, #email').prop('checked', false);
->>>>>>> gh-pages
 }
 
 //clears out everything when document loads
@@ -143,11 +137,6 @@ if (!$('#firstNameCheck').prop('checked') &&
       if (fullName === ""){
         fullName = "example"; //if user did not choose to generate a name
       }
-<<<<<<< HEAD
-        tempNum = getRNG(0,dataPool.emailDomain.length);
-        tempObject += '        "email": ';
-        tempObject += '"' + fullName.toLowerCase() + '@' + dataPool.emailDomain[tempNum] + '",\n';
-=======
       //loads in custom domain if user provided one
       if ($('#customEmail').val() !== "") {
         tempObject += '        "email": ';
@@ -159,7 +148,6 @@ if (!$('#firstNameCheck').prop('checked') &&
         tempObject += '        "email": ';
         tempObject += '"' + fullName.toLowerCase() + '@' + dataPool.emailDomain[tempNum] + '",\n';
       }
->>>>>>> 89f7d5bcacba4732703031812502f9eaec7f8ff2
     }
     tempObject = tempObject.substring(0,tempObject.length-2);
     tempObject += '\n    },\n';
