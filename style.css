@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: #4998B6;
+  background-color: lightgrey;
   font-family: sans-serif;
   text-align: center;
 }
@@ -13,8 +13,8 @@ body {
 }
 
 .intro {
-  background-color: #FFFFD2;
-  border: solid #B22222;
+  background-color: white;
+  border: solid black;
   text-align: center;
   padding: 1% 0;
   margin: 2% 0;
@@ -22,18 +22,18 @@ body {
 
 textarea,
 input {
-  background-color: #FFFFD2;
+  background-color: white;
 }
 
 .button {
-  border-color: solid #B22222;
+  border-color: solid black;
   text-align: left;
   margin-left: 30%;
 }
 
 .button {
-  background: #FFFFD2;
-  border: solid #B22222;
+  background: white;
+  border: solid black;
   padding: 1%;
   margin: 1%;
   margin-bottom: 0;
