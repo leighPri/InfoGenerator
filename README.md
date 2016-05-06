@@ -15,11 +15,12 @@ Currently it's a fairly basic code that only pulls from a small object in the ap
 -Generates a fake phone number (US format, starts with "555"). User can designate a custom area code. If field is left blank
 or invalid a random one will be generated.
 
+-User can download a .JSON file containing their generated information
+
 
 # Planned features
 -Move current dataPool object to its own JSON file and extend its contents
 
--Add a button to copy data to clipboard (maybe, current select button is functional)
 
 # Known Issues
 

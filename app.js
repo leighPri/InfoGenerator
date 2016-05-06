@@ -2,16 +2,16 @@
 var dataPool = {
   firstName: ["Alison", "Bob", "Susan", "Anthony", "Samantha", "Daniel", "Jack", "Leigh", "Brian", "Christopher", "Steven", "Albert"],
   lastName: ["Stevenson", "Johnson", "Cox", "Smith", "Cooke", "Carter", "Jackson", "Akers", "Stiles", "Anderson", "Addams", "Samuels"],
-  job: ["teacher", "dentist", "web developmer", "artist", "internet troll", "writer", "mathmetician", "project manager"],
+  job: ["teacher", "dentist", "web developer", "artist", "internet troll", "writer", "mathmetician", "project manager"],
   emailDomain: ["gmail.com", "hotmail.com", "aol.com", "fakemail.org"]
 };
 
 //declared variables here to allow for proper global scope elsewhere
 var tempObject = "";
 var tempNum = "";
-var fullName ="";
+var fullName = "";
 
-//defines RNG generator for this app
+//defines RNG generator for this app and creates link to download it from
 function getRNG(min, max){
   return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -63,6 +63,25 @@ function clearOut() {
   $('#email').prop('checked', false)
   $('#outputArea, #userNum, #customArea, #customEmail').val('');
   $('#firstNameCheck, #lastNameCheck, #phone, #job, #email').prop('checked', false);
+}
+
+//creates Blob to process download file
+function prepFile(textContent) {
+  //creates data file
+  var blobHolder = new Blob([textContent], {type: 'application/json'});
+  return blobHolder;
+}
+
+//creates download link
+function getDownloadLink(dataFile){
+  //clears out any existing download links to prevent memory leaks
+  if (downloadLink != null){
+    URL.revokeObjectURL(downloadLink);
+  }
+  var downloadLink = URL.createObjectURL(dataFile);
+  console.log(downloadLink);
+  return downloadLink;
+
 }
 
 //clears out everything when document loads
@@ -130,7 +149,7 @@ if (!$('#firstNameCheck').prop('checked') &&
 
     if ($('#phone').prop('checked')){
       var tempPhone = fakePhoneGen($('#customArea').val());
-      tempObject += stringBuilder('lastName', tempPhone);
+      tempObject += stringBuilder('phone', tempPhone);
     }
 
     if ($('#email').prop('checked')){
@@ -158,7 +177,7 @@ if (!$('#firstNameCheck').prop('checked') &&
   outputHolder += ']\n';
 }
   $('#outputArea').val(outputHolder);
-
+  $('#downloadButton').attr("href",getDownloadLink(prepFile(outputHolder)));
 });
 
 //functionality for select button
@@ -170,3 +189,8 @@ $('#selectButton').click(function(){
 $('#clearButton').click(function(){
     clearOut();
 });
+
+//download button functionality
+// $('#downloadButton').click(function(){
+//   this.attr("href",);
+// });

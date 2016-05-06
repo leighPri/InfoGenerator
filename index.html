@@ -9,7 +9,7 @@
 <div class="intro">
   <h1>User Info Generator</h1>
 <p>Welcome to User Info Creator, a simple app to generate user content for testing or prototype purposes.</p>
-<p>This app generates valid JSON in the below field for you to copy-and-paste into your own file.</p>
+<p>This app generates valid JSON in the below field for you to download or to copy-and-paste into your own file.</p>
 </div>
 
 <div class="jsonGen">
@@ -19,8 +19,8 @@
       <span class="notes">(if this is empty, 0, or invalid a random number from 1 to 10 will be generated)</span></p>
     <label>Select which key/value pairs you want your JSON to include:</label>
     <p><input type="checkbox" name="first-name" id="firstNameCheck">First Name
-    <input type="checkbox" name="last-name" id="lastNameCheck">Last Name</p>
-    <p><input type="checkbox" name="job" id="job">Job</p>
+    <input type="checkbox" name="last-name" id="lastNameCheck">Last Name
+    <input type="checkbox" name="job" id="job">Job</p>
     <p><input type="checkbox" name="email" id="email">E-mail
       <input type="text" name="customEmail" id="customEmail" placeholder="custom e-mail domain"> <span class="notes">(optional)</span></p>
       <p><input type="checkbox" name="phone" id="phone">Phone
@@ -31,9 +31,10 @@
     <span class="button" id="generateButton">Generate</span><br><br>
 
   <div class="textContent">
-    <textarea id="outputArea" rows="40" cols="50" name="output" form="content-form" readonly="yes" placeholder="Your JSON will appear here"></textarea><br>
+    <textarea id="outputArea" rows="35" cols="50" name="output" form="content-form" readonly="yes" placeholder="Your JSON will appear here"></textarea><br>
     <span class="button" id="selectButton">Select JSON</span>
-    <span class="button" id="clearButton">Clear All Fields</span>
+    <span class="button" id="clearButton">Clear All Fields</span><br>
+    <span class="button"><a id="downloadButton" download="fakeContactInfo.json">Download File</a></span>
 </form>
 </div>
 </div>

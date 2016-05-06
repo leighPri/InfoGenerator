@@ -2,6 +2,20 @@
   border: none;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+[href^="blob"] {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 body {
   background-color: lightgrey;
   font-family: sans-serif;
